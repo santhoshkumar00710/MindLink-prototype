@@ -1,10 +1,12 @@
 streamlit
+fastapi
+uvicorn
 plotly
 numpy
 scipy
-pydantic
-httpx
-requests
 pandas
 scikit-learn
 joblib
+requests
+pydantic
+httpx
