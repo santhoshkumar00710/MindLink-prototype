@@ -10,3 +10,4 @@ joblib
 requests
 pydantic
 httpx
+torch
