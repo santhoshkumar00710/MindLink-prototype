@@ -5,11 +5,12 @@ Futuristic neurotech interface for the Virtual BCI prototype.
 """
 
 import sys
-import os
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent
-sys.path.insert(0, str(ROOT))
+# Ensure project root is in Python path for backend imports
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
 
 import streamlit as st
 import numpy as np
@@ -19,14 +20,18 @@ from plotly.subplots import make_subplots
 import time
 
 # ── Import pipeline ──────────────────────────────────────────────────────────
-from backend.eeg_simulator import (
-    simulate_eeg, compute_power_spectrum,
-    CHANNEL_LABELS, N_CHANNELS, SAMPLING_RATE,
-)
+from backend.eeg_simulator import simulate_eeg, compute_power_spectrum, CHANNEL_LABELS, N_CHANNELS, SAMPLING_RATE
 from backend.thought_decoder import decode_thought, save_feedback, INTENTS, INTENT_LABELS
 from backend.executor import execute_command
 from utils.signal_processing import compute_all_band_powers, compute_spectrogram
 
+try:
+    from backend.eeg_simulator import simulate_eeg
+except Exception as e:
+    import streamlit as st
+    st.error(f"Backend import failed: {e}")
+    st.stop()
+    
 # ═══════════════════════════════════════════════════════════════════════════════
 # PAGE CONFIG & GLOBAL STYLE
 # ═══════════════════════════════════════════════════════════════════════════════
