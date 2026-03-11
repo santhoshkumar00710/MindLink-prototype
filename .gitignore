@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+dist/
+build/
+*.egg-info/
+.env
+.env.*
+*.pth
+!models/eegnet_model.pth
+models/feedback_log.json
+demo/*.gif
+.DS_Store
+Thumbs.db

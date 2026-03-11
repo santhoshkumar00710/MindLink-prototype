@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+streamlit
+plotly
+numpy
+scipy
+torch
+pydantic
+httpx
+requests
+pyautogui
+pygame
+pandas
+scikit-learn
+joblib
+python-multipart
